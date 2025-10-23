@@ -12,3 +12,9 @@ def budget(request):
 
 def cotization(request):
     return render(request, 'cotization.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def signup(request):
+    return render(request, 'signup.html')

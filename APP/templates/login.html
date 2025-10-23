@@ -1,4 +1,3 @@
-
 {% load static%}
 
 <!DOCTYPE html>
@@ -28,20 +27,21 @@
                     <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Inicio</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <button class="btn btn-primary" type="button">Iniciar Sesion</button>
+                <p style="color: white; text-align: center;">¿No tienes cuenta?</p>
+                <a class="btn btn-primary" type="button" href="{% url 'signup' %}">Registrarse</a>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'main'%}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Servicios</a>
+                            <a class="nav-link" href="{% url 'services' %}">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Presupuesto</a>
+                            <a class="nav-link" href="{% url 'budget' %}">Presupuesto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cotizacion</a>
+                            <a class="nav-link" href="{% url 'cotization' %}">Cotizacion</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
@@ -56,6 +56,33 @@
 
     <!-- GENERAL -->
     <main style="padding-top: 10vh;">
+        <h1 style="text-align: center;">Iniciar Sesion</h1>
+        <form class="row g-3">
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control bg-dark text-white" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Contraseña</label>
+                <input type="password" class="form-control bg-dark text-white" id="inputPassword4">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
+            </div>
+        </form>
+        <div style="margin-top: 40px; text-align: center;">
+            <h2>¿No tienes cuenta?</h2>
+            <h2>Registrate</h2>
+            <a class="btn btn-warning" style="width: 500px; height: auto;" href="{% url 'signup' %}">REGISTRASE</a>
+        </div> 
     </main>
 
     <!-- FOOTER -->

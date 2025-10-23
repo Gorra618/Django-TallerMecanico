@@ -27,20 +27,21 @@
                     <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Inicio</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <button class="btn btn-primary" type="button">Iniciar Sesion</button>
+                <p style="color: white; text-align: center;">¿Ya tienes cuenta?</p>
+                <a class="btn btn-primary" type="button" href="{% url 'login' %}">Iniciar Sesion</a>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="{% url 'main'%}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Servicios</a>
+                            <a class="nav-link" href="{% url 'services' %}">Servicios</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Presupuesto</a>
+                            <a class="nav-link" href="{% url 'budget' %}">Presupuesto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Cotizacion</a>
+                            <a class="nav-link" href="{% url 'cotization' %}">Cotizacion</a>
                         </li>
                     </ul>
                     <form class="d-flex mt-3" role="search">
@@ -55,6 +56,53 @@
 
     <!-- GENERAL -->
     <main style="padding-top: 10vh;">
+        <form class="row g-3">
+            <label for="inputEmail4" class="form-label">Nombre</label>
+            <div class="input-group">
+                <div class="input-group-text bg-dark text-white">@</div>
+                <input type="text" class="form-control bg-dark text-white" id="autoSizingInputGroup">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control bg-dark text-white" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputPassword4" class="form-label">Contraseña</label>
+                <input type="password" class="form-control bg-dark text-white" id="inputPassword4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Nombre</label>
+                <input type="name" class="form-control bg-dark text-white" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Direccion</label>
+                <input type="address" class="form-control bg-dark text-white" id="inputEmail4">
+            </div>
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">DNI</label>
+                <input type="text" class="form-control bg-dark text-white" id="inputCity">
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Telefono</label>
+                <input type="phone" class="form-control bg-dark text-white" id="inputEmail4">
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
+        <div style="margin-top: 40px; text-align: center;">
+            <h2>¿Ya tienes cuenta?</h2>
+            <h2>Inicia sesion</h2>
+            <a class="btn btn-warning" style="width: 500px; height: auto;" href="{% url 'login' %}">INICIAR SESION</a>
+        </div>
     </main>
 
     <!-- FOOTER -->
@@ -97,4 +145,3 @@
 </body>
 
 </html>
-
