@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
+
+/* ====== RESETEO GENERAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  background-color: #1f2428; /* gris titanio oscuro */
+  color: #e0e6ed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== NAVBAR ====== */
+.navbar {
+  background-color: #2d343a !important;
+}
+
+.navbar-brand {
+  font-weight: 600;
+  color: #5da8dc !important;
+}
+
+.nav-link {
+  color: #e0e6ed !important;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  color: #5da8dc !important;
+}
+
+.btn-outline-success {
+  border-color: #5da8dc;
+  color: #5da8dc;
+}
+
+.btn-outline-success:hover {
+  background-color: #5da8dc;
+  color: #1f2428;
+}
+
+/* ====== CONTENIDO PRINCIPAL ====== */
+main {
+  flex: 1;
+  padding-top: 12vh;
+  text-align: center;
+}
+
+.title h1 {
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #5da8dc;
+}
+
+.title h3 {
+  font-weight: 400;
+  color: #a9b4bd;
+  margin-bottom: 30px;
+}
+
+.description {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.description h2 {
+  color: #5da8dc;
+  margin-bottom: 15px;
+}
+
+.description p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+/* ====== FOOTER ====== */
+footer {
+  background-color: #212529;
+  color: #e0e6ed;
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 3px solid #4a5c6b;
+}
+
+.footer h3 {
+  color: #5da8dc;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.footer .contacts p,
+.footer .map p {
+  margin: 5px 0;
+}
+
+.footer .footer_center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.contacts,
+.map {
+  max-width: 450px;
+}
+
+iframe {
+  border-radius: 10px;
+  border: none;
+}
+
+/* ====== BOTÓN FLOTANTE DEL FOOTER (decorativo) ====== */
+#button {
+  width: 35px;
+  height: 35px;
+  border: 10px solid #4a5c6b;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  transition: 0.5s;
+}
+
+#button:hover {
+  border-color: #5da8dc;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .footer .footer_center {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contacts,
+  .map {
+    width: 100%;
+  }
+
+  iframe {
+    height: 300px;
+  }
+
+  .title h1 {
+    font-size: 2rem;
+  }
+}
