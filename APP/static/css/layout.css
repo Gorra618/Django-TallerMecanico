@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600&display=swap");
 
-/* ====== RESETEO GENERAL ====== */
+/* RESETEO GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -9,16 +9,17 @@
 
 body {
   font-family: "Source Sans Pro", sans-serif;
-  background-color: #1f2428; /* gris titanio oscuro */
+  background-color: #1f2428;
   color: #e0e6ed;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-/* ====== NAVBAR ====== */
+/* NAVBAR */
 .navbar {
   background-color: #2d343a !important;
+  padding: 10px 20px;
 }
 
 .navbar-brand {
@@ -29,15 +30,21 @@ body {
 .nav-link {
   color: #e0e6ed !important;
   transition: 0.3s;
+  padding: 8px 16px; 
+  border-radius: 6px;
 }
 
 .nav-link:hover {
-  color: #5da8dc !important;
+  color: #1f2428 !important;
+  background-color: #5da8dc; 
 }
 
 .btn-outline-success {
   border-color: #5da8dc;
   color: #5da8dc;
+  padding: 8px 16px; 
+  border-radius: 6px;
+  transition: 0.3s;
 }
 
 .btn-outline-success:hover {
@@ -45,7 +52,7 @@ body {
   color: #1f2428;
 }
 
-/* ====== CONTENIDO PRINCIPAL ====== */
+/* CONTENIDO PRINCIPAL */
 main {
   flex: 1;
   padding-top: 12vh;
@@ -80,7 +87,16 @@ main {
   margin-bottom: 10px;
 }
 
-/* ====== FOOTER ====== */
+/* IMÁGENES */
+img {
+  display: block;
+  max-width: 100%; 
+  height: auto; 
+  padding: 10px; 
+  border-radius: 8px; 
+}
+
+/* FOOTER */
 footer {
   background-color: #212529;
   color: #e0e6ed;
@@ -115,9 +131,10 @@ footer {
 iframe {
   border-radius: 10px;
   border: none;
+  max-width: 100%;
 }
 
-/* ====== BOTÓN FLOTANTE DEL FOOTER (decorativo) ====== */
+/* BOTÓN FLOTANTE DEL FOOTER */
 #button {
   width: 35px;
   height: 35px;
@@ -131,7 +148,7 @@ iframe {
   border-color: #5da8dc;
 }
 
-/* ====== RESPONSIVE ====== */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .footer .footer_center {
     flex-direction: column;
