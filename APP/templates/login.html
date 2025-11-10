@@ -65,12 +65,21 @@
         </div>
         {% endif %}
 
-        <form class="row g-3" method="POST">
+        <form class="row g-3 text-white" method="POST">
             {% csrf_token %}
-            <input type="text" name="username" class="form-control bg-dark text-white" placeholder="Usuario" required>
-            <input type="password" name="password" class="form-control bg-dark text-white" placeholder="Contraseña" required>
+            <div class="mb-3">
+                <label for="username" class="form-label">Nombre de usuario</label>
+                <input type="text" id="username" name="username" class="form-control bg-dark text-white" placeholder="Ej: santi123" required>
+            </div>
+        
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" id="password" name="password" class="form-control bg-dark text-white" placeholder="********" required>
+            </div>
+        
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
         </form>
+        
         
 
         <div style="margin-top: 40px; text-align: center;">
