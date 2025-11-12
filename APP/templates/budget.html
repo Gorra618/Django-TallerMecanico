@@ -27,7 +27,6 @@
                     <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Presupuesto</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <a class="btn btn-primary" type="button" href="{% url 'login' %}">Iniciar Sesion</a>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
@@ -40,24 +39,29 @@
                             <a class="nav-link" href="{% url 'cotization' %}">Cotizacion</a>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-
+                    {% if user.is_authenticated %}
+                    <p style="color: white; text-align: center;">Bienvenido, {{ user.username }}</p>
+                    <a class="btn btn-danger" type="button" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    {% else %}
+                    <p style="color: white; text-align: center;">¿Ya tienes cuenta?</p>
+                    <a class="btn btn-primary" type="button" href="/admin">Iniciar Sesión</a>
+                    {% endif %}
                 </div>
+
             </div>
+        </div>
         </div>
     </nav>
 
     <!-- GENERAL -->
     <main style="padding-top: 10vh;">
         <div style="text-align: center;">
-            <p style="font-size: 4vw; font-family: monospace;">Presupuesto Inicial</p>
-            <p style="margin-top: 100px; font-size: 6vw; font-family: fantasy;">$100000</p>
+            <p style="font-size: 4vw; font-family: monospace;">Presupuesto Actual</p>
+            <p style="margin-top: 100px; font-size: 6vw; font-family: fantasy;">
+                ${{ presupuesto.monto }}
+            </p>
+            <p>Última actualización: {{ presupuesto.actualizado }}</p>
         </div>
-        <!-- FALTA CREAR LA BASE DE DATOS PARA QUE SE ACTUALICE EL PRESUPUESTO -->
-
     </main>
 
     <!-- FOOTER -->

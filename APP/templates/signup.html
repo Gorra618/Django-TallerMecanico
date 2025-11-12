@@ -27,12 +27,10 @@
                     <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">Inicio</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <p style="color: white; text-align: center;">¿Ya tienes cuenta?</p>
-                <a class="btn btn-primary" type="button" href="{% url 'login' %}">Iniciar Sesion</a>
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="{% url 'main'%}">Inicio</a>
+                            <a class="nav-link active" aria-current="page" href="{% url 'main' %}">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'services' %}">Servicios</a>
@@ -41,14 +39,18 @@
                             <a class="nav-link" href="{% url 'budget' %}">Presupuesto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'cotization' %}">Cotizacion</a>
+                            <a class="nav-link" href="{% url 'cotization' %}">Cotización</a>
                         </li>
                     </ul>
-                    <form class="d-flex mt-3" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
 
+                    <!-- Mostrar opciones según el estado de autenticación -->
+                    {% if user.is_authenticated %}
+                        <p style="color: white; text-align: center;">Bienvenido, {{ user.username }}</p>
+                        <a class="btn btn-danger" type="button" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    {% else %}
+                        <p style="color: white; text-align: center;">¿Ya tienes cuenta?</p>
+                        <a class="btn btn-primary" type="button" href="{% url 'login' %}">Iniciar Sesión</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -58,21 +60,7 @@
     <main style="padding: 10vh 25vw;">
         <form class="row g-3 text-white" method="POST">
             {% csrf_token %}
-            <div class="mb-3">
-                <label for="username" class="form-label">Nombre de usuario</label>
-                <input type="text" id="username" name="username" class="form-control bg-dark text-white" placeholder="Ej: santi123" required>
-            </div>
-        
-            <div class="mb-3">
-                <label for="email" class="form-label">Correo electrónico</label>
-                <input type="email" id="email" name="email" class="form-control bg-dark text-white" placeholder="Ej: santi@mail.com" required>
-            </div>
-        
-            <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-control bg-dark text-white" placeholder="********" required>
-            </div>
-        
+            {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Registrarse</button>
         </form>
         

@@ -64,29 +64,23 @@
             {% endfor %}
         </div>
         {% endif %}
-
-        <form class="row g-3 text-white" method="POST">
+        
+        <form method="POST" class="mt-4">
             {% csrf_token %}
             <div class="mb-3">
-                <label for="username" class="form-label">Nombre de usuario</label>
-                <input type="text" id="username" name="username" class="form-control bg-dark text-white" placeholder="Ej: santi123" required>
+                <label for="mail" class="form-label">Correo Electrónico</label>
+                <input type="email" id="mail" name="mail" class="form-control" required>
             </div>
-        
             <div class="mb-3">
-                <label for="password" class="form-label">Contraseña</label>
-                <input type="password" id="password" name="password" class="form-control bg-dark text-white" placeholder="********" required>
+                <label for="contraseña" class="form-label">Contraseña</label>
+                <input type="password" id="contraseña" name="contraseña" class="form-control" required>
             </div>
-        
             <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+            {% if error %}
+                <p class="text-danger">{{ error }}</p>
+            {% endif %}
         </form>
-        
-        
 
-        <div style="margin-top: 40px; text-align: center;">
-            <h2>¿No tienes cuenta?</h2>
-            <h2>Registrate</h2>
-            <a class="btn btn-warning" style="width: 500px;" href="{% url 'signup' %}">REGISTRARSE</a>
-        </div> 
     </main>
 
     <footer>
