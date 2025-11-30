@@ -9,7 +9,10 @@ class Perfiles(models.Model):
         return self.nombre
 
 class Presupuesto(models.Model):
-    monto = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Monto del Presupuesto")
+    cotizacion = models.ForeignKey('Cotizacion', on_delete=models.CASCADE)
+    aprobado = models.BooleanField(default=False)
+    fecha_aprobacion = models.DateField(null=True, blank=True)
+    monto = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)  
     actualizado = models.DateTimeField(auto_now=True, verbose_name="Última Actualización")
 
     def __str__(self):

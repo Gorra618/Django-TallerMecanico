@@ -1,20 +1,27 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth import logout
 from .models import Presupuesto, Cotizacion, Perfiles
 from .forms import SignupForm
 from django.contrib.auth.decorators import login_required
 
-def main(request):
+def main_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')  
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
     return render(request, 'main.html')
 
 def services(request):
     return render(request, 'services.html')
 
 def budget(request):
-    presupuesto = Presupuesto.objects.first()  # Asume que hay un único presupuesto
+    presupuesto = Presupuesto.objects.first() 
     return render(request, 'budget.html', {'presupuesto': presupuesto})
 
 def cotization(request):
@@ -24,14 +31,17 @@ def cotization(request):
 
 def login_view(request):
     if request.method == 'POST':
-        mail = request.POST.get('mail')
-        contraseña = request.POST.get('contraseña')
-        try:
-            perfil = Perfiles.objects.get(mail=mail, contraseña=contraseña)
-            return redirect('main')  # Redirige al inicio si las credenciales son correctas
-        except Perfiles.DoesNotExist:
-            error = "Correo o contraseña incorrectos"
-            return render(request, 'login.html', {'error': error})
+        username = request.POST.get('username') 
+        password = request.POST.get('password') 
+        if not username or not password:
+            messages.error(request, 'Por favor, completa todos los campos.')
+            return render(request, 'login.html')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')  
+        else:
+            messages.error(request, 'Usuario o contraseña incorrectos.')
     return render(request, 'login.html')
 
 
@@ -40,7 +50,7 @@ def signup_view(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')  # Redirige al inicio de sesión después del registro
+            return redirect('login')
     else:
         form = SignupForm()
     return render(request, 'signup.html', {'form': form})
@@ -48,9 +58,8 @@ def signup_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('main')  # Redirige al inicio de sesión después de cerrar sesión
+    return redirect('/')  
 
 @login_required
 def protected_view(request):
-    # Lógica de la vista
     pass

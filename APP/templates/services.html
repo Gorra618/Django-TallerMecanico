@@ -39,17 +39,34 @@
                             <a class="nav-link" href="{% url 'cotization' %}">Cotizacion</a>
                         </li>
                     </ul>
-                <!-- Mostrar opciones según el estado de autenticación -->
-                {% if user.is_authenticated %}
-                    <p style="color: white; text-align: center;">Bienvenido, {{ user.username }}</p>
-                    <a class="btn btn-danger" type="button" href="{% url 'main' %}">Cerrar Sesión</a>
-                {% else %}
-                    <p style="color: white; text-align: center;">¿Ya tienes cuenta?</p>
-                    <a class="btn btn-primary" type="button" href="/admin">Iniciar Sesión</a>
-                {% endif %}
-            </div>
+                    <li class="nav-item">
+                        {% if user.is_authenticated %}
+                        <p class="text-white mt-3">Bienvenido, {{ user.username }}</p>
+                        <a href="/logout/" class="btn btn-danger w-100 mt-3">Cerrar Sesión</a>
+                        {% else %}
+                        <button class="btn btn-primary w-100 mt-3" data-bs-toggle="collapse" data-bs-target="#loginForm"
+                            aria-expanded="false" aria-controls="loginForm">
+                            Iniciar Sesión
+                        </button>
+                        <div class="collapse mt-3" id="loginForm">
+                            <form method="POST" action="/">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="username" class="form-label text-white">Usuario</label>
+                                    <input type="text" class="form-control" id="username" name="username" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label text-white">Contraseña</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                                <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </li>
                 </div>
             </div>
+        </div>
         </div>
     </nav>
 
@@ -67,7 +84,7 @@
                     <div class="accordion-body" style="text-align: center;">
                         <p>Hacemos reparaciones en cualquier tipo de vehiculo</p>
                         <img style="width: 100%;"
-                        src="https://d343b4rj4wrvkr.cloudfront.net/static/uploads/2025/06/30/56780fba67bd4ae45a8088770ee35a4b.webp?w=3840&q=75">
+                            src="https://d343b4rj4wrvkr.cloudfront.net/static/uploads/2025/06/30/56780fba67bd4ae45a8088770ee35a4b.webp?w=3840&q=75">
                     </div>
                 </div>
             </div>
@@ -81,8 +98,7 @@
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                     <div class="accordion-body" style="text-align: center;">
                         <p>Vendemos todo tipo de repuestos</p>
-                        <img style="width: 100%;"
-                        src="https://www.solverdca.com.ar/storage/2019/03/autopartes.e.jpg">
+                        <img style="width: 100%;" src="https://www.solverdca.com.ar/storage/2019/03/autopartes.e.jpg">
                     </div>
                 </div>
             </div>
@@ -93,11 +109,12 @@
                         Lavado
                     </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse bg-secondary" data-bs-parent="#accordionExample">
+                <div id="collapseThree" class="accordion-collapse collapse bg-secondary"
+                    data-bs-parent="#accordionExample">
                     <div class="accordion-body" style="text-align: center;">
                         <p>Dejamos su vehiculo como nuevo</p>
                         <img style="width: 100%;"
-                        src="https://tucumandespierta.com/wp-content/uploads/2025/01/lavadero-de-autos.webp">
+                            src="https://tucumandespierta.com/wp-content/uploads/2025/01/lavadero-de-autos.webp">
                     </div>
                 </div>
             </div>
